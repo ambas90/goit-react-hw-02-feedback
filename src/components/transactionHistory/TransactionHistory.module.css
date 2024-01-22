@@ -1,0 +1,25 @@
+.transactioHistory {
+  width: 300px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px -3px rgba(0, 0, 0, 1);
+}
+
+.transactioHistory:hover {
+  box-shadow: 4px 4px 6px -3px rgba(0, 0, 0, 1);
+}
+
+.transactioHistory tr {
+  padding: 10px;
+}
+
+.transactioHistory thead {
+  background-color: lightblue;
+}
+
+.transactioHistory tr:nth-child(2n) {
+  background-color: lightgrey;
+}

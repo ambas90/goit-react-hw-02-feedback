@@ -1,0 +1,43 @@
+@keyframes changeBgColor {
+  0% {
+    background-color: lightgreen;
+  }
+  100% {
+    background-color: green;
+  }
+}
+
+.item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+
+.item:hover {
+  background-color: lightblue;
+}
+
+.item:last-child {
+  border-bottom: 0px;
+}
+
+.status {
+  width: 15px;
+  height: 15px;
+  background-color: tomato;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+
+.isOnline {
+  animation-name: changeBgColor;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.name {
+  padding: 10px;
+  font-weight: 700;
+}
