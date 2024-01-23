@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Statistics from './Statistics';
+import FeedbackOptions from './FeedbackOptions';
+import Section from './Section';
+import Notification from './Notification';
 
 export default class FeedBack extends Component {
   state = {
@@ -19,21 +22,9 @@ export default class FeedBack extends Component {
     return total > 0 ? Math.round((good / total) * 100) : 0;
   }
 
-  handleGood = () => {
+  handleFeedback = type => {
     this.setState(state => ({
-      good: state.good + 1,
-    }));
-  };
-
-  handleNeutral = () => {
-    this.setState(state => ({
-      neutral: state.neutral + 1,
-    }));
-  };
-
-  handleBad = () => {
-    this.setState(state => ({
-      bad: state.bad + 1,
+      [type]: state[type] + 1,
     }));
   };
 
@@ -42,26 +33,27 @@ export default class FeedBack extends Component {
     const total = this.countTotalFeedback();
     const PositiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
     return (
-      <>
-        <h1>Please leave feedback</h1>
-        <button type="button" onClick={this.handleGood}>
-          Good
-        </button>
-        <button type="button" onClick={this.handleNeutral}>
-          Neutral
-        </button>
-        <button type="button" onClick={this.handleBad}>
-          Bad
-        </button>
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
-          positivePercentage={PositiveFeedbackPercentage}
-        />
-        .
-      </>
+      <div>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.handleFeedback}
+          />
+        </Section>
+        <Section title="Statistics">
+          {total >= 1 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={PositiveFeedbackPercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
+      </div>
     );
   }
 }
