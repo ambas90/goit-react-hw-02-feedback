@@ -23,8 +23,8 @@ export default class FeedBack extends Component {
   }
 
   handleFeedback = type => {
-    this.setState(state => ({
-      [type]: state[type] + 1,
+    this.setState(prev => ({
+      [type]: prev[type] + 1,
     }));
   };
 
